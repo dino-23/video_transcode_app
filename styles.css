@@ -1,29 +1,121 @@
 body {
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    padding: 20px;
-}
-
-h1, h2 {
+    background-color: #f4f4f4;
     color: #333;
 }
 
-form {
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1, h2 {
+    text-align: center;
+    color: #333;
     margin-bottom: 20px;
 }
 
-#feed {
+/* Upload Form */
+.upload-form {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
-.media-item {
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
+.upload-form input[type="file"] {
     padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.upload-form input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.upload-form .btn-upload {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #5cb85c;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-form .btn-upload:hover {
+    background-color: #4cae4c;
+}
+
+/* Feed Container */
+.feed-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Uploaded Image */
+.uploaded-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.uploaded-image p {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.uploaded-image img {
+    max-width: 100%;
     border-radius: 5px;
 }
 
-.media-item img, .media-item video {
+/* Uploaded Video */
+.uploaded-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.uploaded-video p {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.uploaded-video video {
     max-width: 100%;
+    max-height: 400px;
+    width: auto;
     height: auto;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
 }

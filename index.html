@@ -7,16 +7,39 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Upload Media</h1>
-<form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" name="media" accept="image/*,video/*" required>
-    <input type="text" name="description" placeholder="Add a description" required>
-    <button type="submit">Upload</button>
-</form>
 
-<h2>News Feed</h2>
-<div id="feed"></div>
+<div class="container">
+    <h1>Upload Media</h1>
+    <form id="uploadForm" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="media" id="mediaInput" accept="image/*,video/*" required>
+        <input type="text" name="description" id="descriptionInput" placeholder="Add a description" required>
+        <button type="submit" class="btn-upload">Upload</button>
+    </form>
+
+    <h2>News Feed</h2>
+    <div id="feed" class="feed-container"></div>
+</div>
 
 <script src="app.js"></script>
+<script>
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+
+        // Simulate the upload process
+        console.log("Media uploaded successfully");
+
+        // Clear the file input and description input
+        document.getElementById('mediaInput').value = "";
+        document.getElementById('descriptionInput').value = "";
+
+        // Add uploaded image to the news feed with the description above the image
+        var feed = document.getElementById('feed');
+        var newItem = document.createElement('div');
+        newItem.classList.add('uploaded-image');
+        newItem.innerHTML = '<p>Image Description</p><img src="image.png" alt="Uploaded Media" />';
+        feed.appendChild(newItem);
+    });
+</script>
+
 </body>
 </html>
