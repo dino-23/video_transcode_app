@@ -2,44 +2,105 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Media App</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Upload Media</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #3a3afb;
+            margin-bottom: 20px;
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .upload-form input,
+        .upload-form button {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .upload-form button {
+            background-color: #3a3afb;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .upload-form button:hover {
+            background-color: #2e2efa;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        ul li:hover {
+            background-color: #f0f0ff;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #3a3afb;
+            word-break: break-all;
+        }
+    </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Upload Media</h1>
-    <form id="uploadForm" enctype="multipart/form-data" class="upload-form">
-        <input type="file" name="media" id="mediaInput" accept="image/*,video/*" required>
-        <input type="text" name="description" id="descriptionInput" placeholder="Add a description" required>
-        <button type="submit" class="btn-upload">Upload</button>
-    </form>
-
-    <h2>News Feed</h2>
-    <div id="feed" class="feed-container"></div>
-</div>
-
-<script src="app.js"></script>
-<script>
-    document.getElementById('uploadForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the form from submitting the traditional way
-
-        // Simulate the upload process
-        console.log("Media uploaded successfully");
-
-        // Clear the file input and description input
-        document.getElementById('mediaInput').value = "";
-        document.getElementById('descriptionInput').value = "";
-
-        // Add uploaded image to the news feed with the description above the image
-        var feed = document.getElementById('feed');
-        var newItem = document.createElement('div');
-        newItem.classList.add('uploaded-image');
-        newItem.innerHTML = '<p>Image Description</p><img src="image.png" alt="Uploaded Media" />';
-        feed.appendChild(newItem);
-    });
-</script>
-
+    <div class="container">
+        <h1>Upload Media</h1>
+        <form class="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="video" accept="video/*" required>
+            <input type="text" name="description" placeholder="Add a description" required>
+            <button type="submit">Upload and Transcode</button>
+        </form>
+        <h3>Uploaded Videos:</h3>
+        <ul id="video-list">
+            <!-- This is where the uploaded video links will be rendered -->
+        </ul>
+    </div>
 </body>
 </html>
